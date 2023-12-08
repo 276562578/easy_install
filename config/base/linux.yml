@@ -2,4 +2,4 @@ apt:
   compatible:
     - Debian
   run:
-    - apt -y install vim htop locate zip unzip
+    - apt -y install vim htop locate zip unzip wget curl
