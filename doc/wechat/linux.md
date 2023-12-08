@@ -8,6 +8,30 @@ linux微信目前官方版进度缓慢，所以派生出了多种安装方式
 4. 基于deepin-wine的版本（暂时推荐，[点此跳转](https://github.com/vufa/deepin-wine-wechat-arch)但这个库是基于AUR的）
 5. 根据4进行的docker打包（推荐）
 6. 盒装微信（有一些小bug，[点此跳转](https://github.com/huan/docker-wechat)）
+7. spark版本的com.qq.weixin.spark（当前最佳）
+
+# 使用方法
+
+新建一个目录之后复制docker-compose.yml文件到该目录下，然后根据描述修改相应的变量，运行`docker-compose up -d`即可
+
+为了更方便之后使用，可以添加 /usr/share/applications/wechat.desktop 文件来新建快捷方式
+
+```desktop
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Categories=chat;Network;
+# 图标可以在 https://cdn.lwqwq.com/dl/wechat.svg 这里下载
+Icon=//wechat.svg
+Name=WeChat
+Name[zh_CN]=微信
+Comment=Tencent WeChat Client on Deepin Wine
+StartupWMClass=WeChat.exe
+Exec=docker exec wechat /opt/apps/com.qq.weixin.spark/files/run.sh
+```
+
+有问题可以进入docker内部进行调试`docker exec wechat /opt/apps/com.qq.weixin.spark/files/run.sh`
 
 # spark版本（推荐）
 
@@ -82,7 +106,7 @@ services:
     # 挂载微信缓存文件夹
       - /home//software/wechat/DoChat/WeChat Files/:/root/WeChat Files/
     # 为了方便发送截图用的
-      - /home//图片/截图:/root/WeChat Files/manaileihajdgf/FileStorage/File/截图
+      - /home//图片/截图:/截图
       - /home//software/wechat/DoChat/Applcation Data/:/root/.wine/drive_c/users/user/Application Data/
     # x11显示
       - /tmp/.X11-unix:/tmp/.X11-unix
@@ -218,7 +242,7 @@ services:
     # 挂载微信缓存文件夹
       - /home//software/wechat/DoChat/WeChat Files/:/home/builder/WeChat Files/
     # 为了方便发送截图用的
-      - /home//图片/截图:/home/builder/WeChat Files/manaileihajdgf/FileStorage/File/截图
+      - /home//图片/截图:/截图
       - /home//software/wechat/DoChat/Applcation Data/:/home/builder/.wine/drive_c/users/user/Application Data/
     # x11显示
       - /tmp/.X11-unix:/tmp/.X11-unix
