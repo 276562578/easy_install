@@ -8,8 +8,8 @@ class Config:
     def __init__(self):
         self.config_dir="config"
 
-    def get_config(self,app=None,os=None):
-        config_file=os.path.join(self.config_dir,app,f"{os}.yml")
+    def get_config(self,app,OS):
+        config_file=os.path.join(self.config_dir,app,f"{OS}.yml")
         with open(config_file,encoding="utf-8") as f:
             config=yaml.safe_load(f)
         return config
