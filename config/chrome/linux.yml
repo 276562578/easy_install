@@ -1,4 +1,4 @@
-google-chrome:
+default:
   compatible:
     - Debian
   run:

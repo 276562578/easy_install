@@ -1,4 +1,4 @@
-apt:
+default:
   compatible:
     - Debian
   run:

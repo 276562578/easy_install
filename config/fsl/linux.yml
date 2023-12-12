@@ -1,5 +1,5 @@
 ---
-fsl:
+default:
   compatible:
   - Debian
   run:
