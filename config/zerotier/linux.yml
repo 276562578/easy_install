@@ -1,5 +1,7 @@
-default:
+auto_command: &auto_command
   compatible:
     - Debian
   run:
     - curl -s https://install.zerotier.com | sudo bash
+default:
+  *auto_command

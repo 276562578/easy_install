@@ -1,7 +1,9 @@
-default:
+docker: &docker
   compatible:
     - Debian
   run:
     - mkdir -p ${software_dir}/wechat
     - cd ${software_dir}/wechat
     - echo "Downloading WeChat for Linux..." > docker-compose.yml
+default:
+  *docker

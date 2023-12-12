@@ -1,5 +1,4 @@
----
-default:
+fsl: &fsl
   compatible:
   - Debian
   run:
@@ -35,3 +34,5 @@ default:
     Icon=/usr/local/fsl/pkgs/fsleyes-1.9.0-pyh0d859eb_1/info/icon.png
     ' > /usr/share/applications/fsleyes.desktop
     - update-desktop-database
+default:
+  *fsl

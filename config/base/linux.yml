@@ -1,5 +1,7 @@
-default:
+base: &base
   compatible:
     - Debian
   run:
     - apt -y install vim htop locate zip unzip wget curl
+default:
+  *base
