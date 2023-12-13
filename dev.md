@@ -24,9 +24,20 @@
 
 ```yml
 qqnt: &qqnt # 这里添加引用，便于default使用
+  desc: qqNT版本 # 描述
   compatible: # 兼容的系统，通常为大版本号或者发行版
     - Debian
   run: # 实际安装软件的命令，命令之间环境是同一个
+    - xxxx
+  config: # (opt) 配置文件，用于备份
+    - xxxx
+  role1: # (opt) 超级菜鸟的后处理，用于安装完成后的一些配置
+    - xxxx
+  role2: # (opt) 中级选手的后处理，用于安装完成后的一些配置
+    - xxxx
+  role3: # (opt) 高级选手的后处理，用于安装完成后的一些配置
+    - xxxx
+  role4: # (opt) 顶级大佬的后处理，用于安装完成后的一些配置
     - xxxx
 default: # 默认配置，如果没有特殊的配置，就使用这个
   *qqnt # 引用

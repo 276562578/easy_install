@@ -3,5 +3,7 @@ base: &base
     - Debian
   run:
     - apt -y install vim htop locate zip unzip wget curl
+    # 后续安装过程所需
+    - apt -y install jq
 default:
   *base
