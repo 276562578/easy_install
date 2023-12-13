@@ -1,0 +1,12 @@
+qqnt: &qqnt
+  compatible:
+    - Debian
+  run:
+    - wget https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/linuxQQDownload.js -O /tmp/linuxQQDownload.js
+    - json=$(grep -Eo "\{\"name\".*?deb\"\}\}" /tmp/linuxQQDownload.js)
+    # 根据架构选择下载链接
+    - url=$(echo $json|jq -r '.x64DownloadUrl.deb')
+    - wget $url -O /tmp/qq.deb
+    - apt install -y /tmp/qq.deb
+default:
+  *qqnt
