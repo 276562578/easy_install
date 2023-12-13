@@ -14,11 +14,23 @@
 
 是存储配置文件的位置
 
-二级目录是应用名，内部配置文件分为
+二级目录是应用名，内部配置文件分别对应相应的系统
 
-- win.conf
-- linux.conf
-- mac.conf
+- win.yml
+- linux.yml
+- mac.yml
+
+以qq为例：
+
+```yml
+qqnt: &qqnt # 这里添加引用，便于default使用
+  compatible: # 兼容的系统，通常为大版本号或者发行版
+    - Debian
+  run: # 实际安装软件的命令，命令之间环境是同一个
+    - xxxx
+default: # 默认配置，如果没有特殊的配置，就使用这个
+  *qqnt # 引用
+```
 
 ## doc
 
@@ -29,5 +41,7 @@
 # ENV
 
 一些环境变量，以及一些预定义的变量
+
+- software_dir 所有软件的装目录
 
 # API
