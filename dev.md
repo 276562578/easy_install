@@ -29,7 +29,7 @@ qqnt: &qqnt # 这里添加引用，便于default使用
     - Debian
   run_template: &run # （opt）后续根据角色会执行命令，这里可以统一建一个模板
     - xxxx
-  config: # (opt) 配置文件，用于备份
+  config: # (opt) 配置文件的位置，用于备份
     - xxxx
   role1: # (require) 超级菜鸟的处理，在这里写入执行的命令，role1需要全自动执行
     - xxxx
@@ -55,5 +55,6 @@ default: # 默认配置，如果没有特殊的配置，就使用这个
 一些环境变量，以及一些预定义的变量
 
 - software_dir 所有软件的装目录
+- platform 架构x86, arm等
 
 # API
