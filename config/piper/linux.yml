@@ -1,0 +1,10 @@
+apt: &apt
+  desc: 一个罗技鼠标的控制器
+  compatible:
+    - Debian
+  run: &run
+    - apt install piper -y
+  role1:
+    - *run
+default:
+  *apt
