@@ -1,7 +1,7 @@
 fsl: &fsl
   compatible:
   - Debian
-  run:
+  run: &run
   - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py
   - python3 fslinstaller.py -d /usr/local/fsl/
   # 配置环境变量
@@ -34,5 +34,7 @@ fsl: &fsl
     Icon=/usr/local/fsl/pkgs/fsleyes-1.9.0-pyh0d859eb_1/info/icon.png
     ' > /usr/share/applications/fsleyes.desktop
     - update-desktop-database
+  role1:
+    - *run
 default:
   *fsl
