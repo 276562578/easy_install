@@ -1,4 +1,5 @@
 docker: &docker
+  desc: 用docker的方式安装spark版本的微信，目前功能最全的版本了
   compatible:
     - Debian
   run: &run
