@@ -1,0 +1,8 @@
+latest: &latest
+  compatible:
+    - Debian
+  run:
+    - wget https://builds.parsec.app/package/parsec-linux.deb -O /tmp/parsec-linux.deb
+    - apt install /tmp/parsec-linux.deb -y
+default:
+  *latest
