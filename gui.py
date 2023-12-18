@@ -69,7 +69,7 @@ class MainPage(BasePage):
         # 第一行frame
         self.frame_role1_sub1 = tk.Frame(self.frame_role1)
         self.frame_role1_sub1.pack()
-        label = tk.Label(self.frame_role1_sub1, text="选择你想安装的软件或者进行搜索")
+        label = tk.Label(self.frame_role1_sub1, text="搜索：")
         label.grid(row=0, column=0, padx=10, pady=10)
         searcher = tk.Entry(self.frame_role1_sub1)
         searcher.grid(row=0, column=1, padx=10, pady=10)
@@ -83,7 +83,7 @@ class MainPage(BasePage):
             app=tk.Frame(self.frame_role1_sub2)
             app.grid(row=i//4,column=i%4,padx=10,pady=10)
             # 组成元素
-            app_icon=tk.Label(app,text="图标")
+            app_icon=tk.Label(app,image="icon.svg")
             app_icon.pack(side="top")
             app_select=tk.Checkbutton(app)
             app_select.pack(side="left")
