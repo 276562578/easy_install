@@ -1,5 +1,6 @@
+import os
 import tkinter as tk
-
+from PIL import Image, ImageTk
 import tools
 
 
@@ -77,18 +78,26 @@ class MainPage(BasePage):
         # 第二行frame
         self.frame_role1_sub2 = tk.Frame(self.frame_role1)
         self.frame_role1_sub2.pack(fill=tk.BOTH, expand=tk.YES)
+        for column in range(4): # 修改权重让格子一样大
+            self.frame_role1_sub2.grid_columnconfigure(column, weight=1)
+        for row in range(4):
+            self.frame_role1_sub2.grid_rowconfigure(row, weight=1)
         # 构建应用列表
         for i,app_name in enumerate(self.apps):
-            # 组合成一个
             app=tk.Frame(self.frame_role1_sub2)
-            app.grid(row=i//4,column=i%4,padx=10,pady=10)
+            app.grid(row=i//4,column=i%4,padx=10,pady=10,sticky='nsew')
             # 组成元素
-            app_icon=tk.Label(app,image="icon.svg")
+            im = Image.open(os.path.join("config",app_name,"icon.png"))
+            ph = ImageTk.PhotoImage(im.resize((50,50)))
+            app_icon=tk.Label(app,image=ph)
+            app_icon.image=ph
             app_icon.pack(side="top")
-            app_select=tk.Checkbutton(app)
-            app_select.pack(side="left")
+            # app_select=tk.Checkbutton(app)
+            # app_select.pack(side="left")
             app_name=tk.Label(app,text=app_name)
-            app_name.pack(side="left")
+            app_name.pack(side="top") # 这一步必须的
+            app_install=tk.Button(app,text="安装")
+            app_install.pack(expand=tk.YES,fill=tk.X)
 
 
         # 第三行的确认frame
