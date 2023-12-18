@@ -2,38 +2,39 @@ fsl: &fsl
   compatible:
   - Debian
   run: &run
-  - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py
-  - python3 fslinstaller.py -d /usr/local/fsl/
-  # 配置环境变量
-  - FSLDIR=/usr/local/fsl
-  - echo 'FSLDIR=/usr/local/fsl' > /etc/profile.d/fsl.sh
-  - echo 'PATH=${FSLDIR}/share/fsl/bin:${PATH}' >> /etc/profile.d/fsl.sh
-  - echo 'export FSLDIR PATH' >> /etc/profile.d/fsl.sh
-  - cat /usr/local/fsl/etc/fslconf/fsl.sh >> /etc/profile.d/fsl.sh
-  # 配置mime，让相关文件自动使用fsl打开
-  - |-
-    echo '
-    <?xml version="1.0" encoding="UTF-8"?>
-    <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-      <mime-type type="application/x-nifti-image">
-        <comment>NIfTI Image</comment> 
-        <glob pattern="*.nii"/> 
-        <glob pattern="*.nii.gz"/> 
-      </mime-type> 
-    </mime-info>
-    ' > usr/share/mime/packages/nifti.xml
-  - update-mime-database /usr/share/mime
-  # 配置fsleyes桌面图标
-  - |-
-    echo '
-    [Desktop Entry] 
-    Name=fsleyes E
-    xec=fsleyes %U 
-    Type=Application 
-    MimeType=application/x-nifti-image;
-    Icon=/usr/local/fsl/pkgs/fsleyes-1.9.0-pyh0d859eb_1/info/icon.png
-    ' > /usr/share/applications/fsleyes.desktop
-    - update-desktop-database
+    - apt -y install dc
+    - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py
+    - python3 fslinstaller.py -d /usr/local/fsl/
+    # 配置环境变量
+    - FSLDIR=/usr/local/fsl
+    - echo 'FSLDIR=/usr/local/fsl' > /etc/profile.d/fsl.sh
+    - echo 'PATH=${FSLDIR}/share/fsl/bin:${PATH}' >> /etc/profile.d/fsl.sh
+    - echo 'export FSLDIR PATH' >> /etc/profile.d/fsl.sh
+    - cat /usr/local/fsl/etc/fslconf/fsl.sh >> /etc/profile.d/fsl.sh
+    # 配置mime，让相关文件自动使用fsl打开
+    - |-
+      echo '
+      <?xml version="1.0" encoding="UTF-8"?>
+      <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+        <mime-type type="application/x-nifti-image">
+          <comment>NIfTI Image</comment> 
+          <glob pattern="*.nii"/> 
+          <glob pattern="*.nii.gz"/> 
+        </mime-type> 
+      </mime-info>
+      ' > usr/share/mime/packages/nifti.xml
+    - update-mime-database /usr/share/mime
+    # 配置fsleyes桌面图标
+    - |-
+      echo '
+      [Desktop Entry] 
+      Name=fsleyes E
+      xec=fsleyes %U 
+      Type=Application 
+      MimeType=application/x-nifti-image;
+      Icon=/usr/local/fsl/pkgs/fsleyes-1.9.0-pyh0d859eb_1/info/icon.png
+      ' > /usr/share/applications/fsleyes.desktop
+      - update-desktop-database
   role1:
     - *run
 default:
