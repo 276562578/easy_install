@@ -21,7 +21,7 @@ class MainPage(BasePage):
         self.apps=self.config.get_apps()
 
     def main_page(self):
-        self.frame_main = tk.Frame(self)
+        self.frame_main = tk.Frame()
         self.frame_main.pack(fill=tk.BOTH, expand=tk.YES)
 
         # 创建按钮的容器Frame，并设置为可以在横向和纵向上扩展
@@ -64,7 +64,7 @@ class MainPage(BasePage):
 
     def role1_page(self):
         # 当前页面背景框架
-        self.frame_role1 = tk.Frame(self)
+        self.frame_role1 = tk.Frame()
         self.frame_role1.pack(fill=tk.BOTH, expand=tk.YES)
 
         # 第一行frame
@@ -97,15 +97,15 @@ class MainPage(BasePage):
         for i,app_name in enumerate(self.apps):
             app=tk.Frame(frame_app_list)
             app.grid(row=i//4,column=i%4,padx=10,pady=10,sticky='nsew')
-            app.pack(fill=tk.BOTH,expand=tk.YES,padx=10,pady=10)
+            # app.pack(fill=tk.BOTH,expand=tk.YES,padx=10,pady=10)
             # 组成元素
             im = Image.open(os.path.join("config",app_name,"icon.png"))
             ph = ImageTk.PhotoImage(im.resize((50,50)))
             app_icon=tk.Label(app,image=ph)
             app_icon.image=ph
             app_icon.pack(side="top")
-            app_select=tk.Checkbutton(app)
-            app_select.pack(side="left")
+            # app_select=tk.Checkbutton(app)
+            # app_select.pack(side="left")
             app_name=tk.Label(app,text=app_name)
             app_name.pack(side="top") # 这一步必须的
             app_install=tk.Button(app,text="安装")

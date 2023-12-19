@@ -1,0 +1,21 @@
+from tkinter import *
+
+main=Frame()
+main.pack(fill=BOTH, expand=YES)
+main2_frame = Frame(main)
+main2_frame.pack(fill=BOTH, expand=YES, padx=10, pady=10)
+main_frame = Frame(main)
+main_frame.pack(fill=BOTH, expand=YES, padx=10, pady=10)
+my_canvas = Canvas(main_frame)
+my_canvas.pack(side=LEFT, fill=BOTH, expand=YES)
+my_scrollbar = Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+my_scrollbar.pack(side=RIGHT, fill=Y)
+my_canvas.configure(yscrollcommand=my_scrollbar.set)
+my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))
+second_frame = Frame(my_canvas)
+my_canvas.create_window((0, 0), window=second_frame, anchor="nw")
+for i in range(100):
+    app = Frame(second_frame)
+    app.grid(row=i // 4, column=i % 4, padx=10, pady=10, sticky='nsew')
+    Button(app, text=f"Button {i} yo!").pack()
+mainloop()
