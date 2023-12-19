@@ -41,6 +41,8 @@ Exec=docker exec wechat /opt/apps/com.qq.weixin.spark/files/run.sh
 
 PS 原安装程序会默认删除应用的缓存，我不想每次新建container的时候丢失记录，所以进行了一点魔改，如果因此出现问题请告知我
 
+如需复制图片需要在宿主机安装xclip（可能）
+
 ## Dockerfile
 
 ```Dockerfile
