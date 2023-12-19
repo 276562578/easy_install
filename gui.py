@@ -76,12 +76,18 @@ class MainPage(BasePage):
         searcher.grid(row=0, column=1, padx=10, pady=10)
 
         # 第二行frame
-        scrollbar = tk.Scrollbar(self.frame_role1)  # https://blog.csdn.net/qq_28123095/article/details/79331756
-        scrollbar.pack(side="right", fill=tk.BOTH, padx=10, pady=10)
-        canvas = tk.Canvas(self.frame_role1, yscrollcommand=scrollbar.set)
-        self.frame_role1_sub2 = tk.Frame(canvas)
-        self.frame_role1_sub2.pack(fill=tk.BOTH, expand=tk.YES,padx=10,pady=10)
+        # https://www.youtube.com/watch?v=0WafQCaok6g
+        self.frame_role1_sub2 = tk.Frame(self.frame_role1)
+        self.frame_role1_sub2.pack(fill=tk.BOTH, expand=tk.YES, padx=10, pady=10)
+        canvas = tk.Canvas(self.frame_role1_sub2)
         canvas.pack(side="left", fill=tk.BOTH, expand=tk.YES)
+        scrollbar = tk.Scrollbar(self.frame_role1_sub2,command=canvas.yview)  # https://blog.csdn.net/qq_28123095/article/details/79331756
+        scrollbar.pack(side="right", fill=tk.Y, padx=10, pady=10)
+        canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+        frame_app_list= tk.Frame(canvas)
+        canvas.create_window((0, 0), window=frame_app_list, anchor='nw')
+        frame_app_list.pack(fill=tk.BOTH, expand=tk.YES, padx=10, pady=10)
         # scrollbar.config(command=canvas.yview)
         # for column in range(4): # 修改权重让格子一样大
         #     self.frame_role1_sub2.grid_columnconfigure(column, weight=1)
@@ -89,16 +95,17 @@ class MainPage(BasePage):
         #     self.frame_role1_sub2.grid_rowconfigure(row, weight=1)
         # 构建应用列表
         for i,app_name in enumerate(self.apps):
-            app=tk.Frame(self.frame_role1_sub2)
+            app=tk.Frame(frame_app_list)
             app.grid(row=i//4,column=i%4,padx=10,pady=10,sticky='nsew')
+            app.pack(fill=tk.BOTH,expand=tk.YES,padx=10,pady=10)
             # 组成元素
             im = Image.open(os.path.join("config",app_name,"icon.png"))
             ph = ImageTk.PhotoImage(im.resize((50,50)))
             app_icon=tk.Label(app,image=ph)
             app_icon.image=ph
             app_icon.pack(side="top")
-            # app_select=tk.Checkbutton(app)
-            # app_select.pack(side="left")
+            app_select=tk.Checkbutton(app)
+            app_select.pack(side="left")
             app_name=tk.Label(app,text=app_name)
             app_name.pack(side="top") # 这一步必须的
             app_install=tk.Button(app,text="安装")
@@ -106,7 +113,7 @@ class MainPage(BasePage):
 
         # 第三行的确认frame
         self.frame_role1_sub3=tk.Frame(self.frame_role1,class_="role1_sub3")
-        self.frame_role1_sub3.pack(side="bottom",fill=tk.X,padx=10,pady=10)
+        self.frame_role1_sub3.pack(fill=tk.BOTH,expand=tk.YES,padx=10,pady=10)
         button_confirm=tk.Button(self.frame_role1_sub3,text="确认")
         button_confirm.pack(side="right",padx=10,pady=10)
 
