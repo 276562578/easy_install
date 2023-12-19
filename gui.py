@@ -76,12 +76,17 @@ class MainPage(BasePage):
         searcher.grid(row=0, column=1, padx=10, pady=10)
 
         # 第二行frame
-        self.frame_role1_sub2 = tk.Frame(self.frame_role1)
-        self.frame_role1_sub2.pack(fill=tk.BOTH, expand=tk.YES)
-        for column in range(4): # 修改权重让格子一样大
-            self.frame_role1_sub2.grid_columnconfigure(column, weight=1)
-        for row in range(4):
-            self.frame_role1_sub2.grid_rowconfigure(row, weight=1)
+        scrollbar = tk.Scrollbar(self.frame_role1)  # https://blog.csdn.net/qq_28123095/article/details/79331756
+        scrollbar.pack(side="right", fill=tk.BOTH, padx=10, pady=10)
+        canvas = tk.Canvas(self.frame_role1, yscrollcommand=scrollbar.set)
+        self.frame_role1_sub2 = tk.Frame(canvas)
+        self.frame_role1_sub2.pack(fill=tk.BOTH, expand=tk.YES,padx=10,pady=10)
+        canvas.pack(side="left", fill=tk.BOTH, expand=tk.YES)
+        # scrollbar.config(command=canvas.yview)
+        # for column in range(4): # 修改权重让格子一样大
+        #     self.frame_role1_sub2.grid_columnconfigure(column, weight=1)
+        # for row in range(4):
+        #     self.frame_role1_sub2.grid_rowconfigure(row, weight=1)
         # 构建应用列表
         for i,app_name in enumerate(self.apps):
             app=tk.Frame(self.frame_role1_sub2)
@@ -98,7 +103,6 @@ class MainPage(BasePage):
             app_name.pack(side="top") # 这一步必须的
             app_install=tk.Button(app,text="安装")
             app_install.pack(expand=tk.YES,fill=tk.X)
-
 
         # 第三行的确认frame
         self.frame_role1_sub3=tk.Frame(self.frame_role1,class_="role1_sub3")
