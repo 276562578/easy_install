@@ -87,7 +87,7 @@ class MainPage(BasePage):
         canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
         frame_app_list= tk.Frame(canvas)
         canvas.create_window((0, 0), window=frame_app_list, anchor='nw')
-        frame_app_list.pack(fill=tk.BOTH, expand=tk.YES, padx=10, pady=10)
+        # frame_app_list.pack(fill=tk.BOTH, expand=tk.YES, padx=10, pady=10)
         # scrollbar.config(command=canvas.yview)
         # for column in range(4): # 修改权重让格子一样大
         #     self.frame_role1_sub2.grid_columnconfigure(column, weight=1)
