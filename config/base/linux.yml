@@ -2,7 +2,7 @@ base: &base
   desc: 每个电脑必备的基础软件以及程序后续安装需要的软件
   compatible:
     - Debian
-  run: &run
+  default_run: 
     - apt -y install vim htop locate zip unzip wget curl
     # 后续安装过程所需
     - apt -y install jq

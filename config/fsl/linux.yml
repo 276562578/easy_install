@@ -1,7 +1,7 @@
 fsl: &fsl
   compatible:
   - Debian
-  run: &run
+  default_run: 
     - apt -y install dc
     - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py
     - python3 fslinstaller.py -d /usr/local/fsl/

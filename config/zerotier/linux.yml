@@ -1,7 +1,7 @@
 auto_command: &auto_command
   compatible:
     - Debian
-  run: &run
+  default_run: 
     - curl -s https://install.zerotier.com | sudo bash
   role1:
     - *run

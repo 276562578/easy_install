@@ -1,7 +1,7 @@
 apt: &apt
   compatible:
     - Debian
-  run: &run
+  default_run: 
     - apt install obs-studio -y
   role1:
     - *run

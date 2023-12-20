@@ -2,7 +2,7 @@ qqnt: &qqnt
   desc: 官方提供了NT版本，但是考虑到扫描文件的风险，之后可能会做个docker的版本
   compatible:
     - Debian
-  run: &run
+  default_run: 
     - wget https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/linuxQQDownload.js -O /tmp/linuxQQDownload.js
     - json=$(grep -Eo "\{\"name\".*?deb\"\}\}" /tmp/linuxQQDownload.js)
     # 根据架构选择下载链接
@@ -10,6 +10,6 @@ qqnt: &qqnt
     - wget $url -O /tmp/qq.deb
     - apt install -y /tmp/qq.deb
   role1:
-    - *run
+    -
 default:
   *qqnt

@@ -1,7 +1,7 @@
 google-chrome: &google-chrome
   compatible:
     - Debian
-  run: &run
+  default_run: 
     - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - dpkg -i google-chrome-stable_current_amd64.deb
   role1:

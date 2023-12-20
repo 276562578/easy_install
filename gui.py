@@ -100,7 +100,10 @@ class MainPage(BasePage):
             # 定义变量
             app_name=app_name
             app_icon=os.path.join("config",app_name,"icon.png")
-            app_desc=""
+            app_config=self.config.get_config(app_name,"linux")["default"]
+            app_desc=app_config["desc"]
+            app_default_run=app_config["default_run"]
+            app_run=app_config["role1"]
             # 定义单个app的frame
             app=tk.Frame(frame_app_list)
             # app.grid(row=i//4,column=i%4,padx=10,pady=10,sticky='nsew')

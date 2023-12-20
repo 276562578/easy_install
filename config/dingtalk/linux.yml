@@ -1,7 +1,7 @@
 dingtalk: &dingtalk
   compatible:
     - Debian
-  run: &run
+  default_run: 
     - wget https://g.alicdn.com/dingding/h5-home-download/0.2.6/js/index.js -O /tmp/dingtalk.js
     - json=$(grep -Eo "\[\{name.*deb\"\}\]" /tmp/dingtalk.js)
     # 根据架构选择下载链接
