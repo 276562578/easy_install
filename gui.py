@@ -97,13 +97,18 @@ class MainPage(BasePage):
         #     frame_app_list.grid_rowconfigure(row, weight=1)
         # 构建应用列表
         for i,app_name in enumerate(self.apps):
+            # 定义变量
+            app_name=app_name
+            app_icon=os.path.join("config",app_name,"icon.png")
+            app_desc=""
+            # 定义单个app的frame
             app=tk.Frame(frame_app_list)
             # app.grid(row=i//4,column=i%4,padx=10,pady=10,sticky='nsew')
             app.pack(fill=tk.X,expand=tk.YES,padx=10,pady=10)
             # 组成元素
             app_install = tk.Button(app, text="安装")
             app_install.pack(side="left")
-            im = Image.open(os.path.join("config",app_name,"icon.png"))
+            im = Image.open(app_icon)
             ph = ImageTk.PhotoImage(im.resize((50,50)))
             app_icon=tk.Label(app,image=ph)
             app_icon.image=ph
@@ -112,7 +117,7 @@ class MainPage(BasePage):
             # app_select.pack(side="left")
             app_name=tk.Label(app,text=app_name)
             app_name.pack(side="left")
-            app_desc=tk.Label(app,text="")
+            app_desc=tk.Label(app,text=app_desc)
             app_desc.pack(side="left",fill=tk.X,expand=tk.YES)
             line=tk.Frame(frame_app_list,height=1,bg="black")
             line.pack(fill=tk.X,expand=tk.YES,padx=10,pady=10)
