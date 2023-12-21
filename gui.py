@@ -19,6 +19,8 @@ class MainPage(BasePage):
         self.main_page()
         self.config=tools.Config()
         self.apps=self.config.get_apps()
+        self.env=tools.Env()
+        self.executor=tools.Executor()
 
     def main_page(self):
         self.frame_main = tk.Frame()
