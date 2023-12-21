@@ -7,6 +7,6 @@ base: &base
     # 后续安装过程所需
     - apt -y install jq
   role1:
-    - *run
+    -
 default:
   *base

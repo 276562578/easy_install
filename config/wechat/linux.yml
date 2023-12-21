@@ -1,4 +1,4 @@
-docker: &docker
+docker-spark: &docker-spark
   desc: 用docker的方式安装spark版本的微信，目前功能最全的版本了，图片和文件的交互由于docker的特性还没法解决
   compatible:
     - Debian
@@ -7,6 +7,6 @@ docker: &docker
     - cd ${software_dir}/wechat
     - echo "Downloading WeChat for Linux..." > docker-compose.yml
   role1:
-    - *run
+    -
 default:
-  *docker
+  *docker-spark

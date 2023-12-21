@@ -36,6 +36,6 @@ fsl: &fsl
       ' > /usr/share/applications/fsleyes.desktop
       - update-desktop-database
   role1:
-    - *run
+    -
 default:
   *fsl

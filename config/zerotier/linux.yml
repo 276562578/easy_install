@@ -4,6 +4,6 @@ auto_command: &auto_command
   default_run: 
     - curl -s https://install.zerotier.com | sudo bash
   role1:
-    - *run
+    -
 default:
   *auto_command

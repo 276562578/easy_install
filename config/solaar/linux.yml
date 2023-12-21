@@ -5,6 +5,6 @@ apt: &apt
   default_run: 
     - apt install solaar -y
   role1:
-    - *run
+    -
 default:
   *apt

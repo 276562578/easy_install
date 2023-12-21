@@ -9,6 +9,6 @@ dingtalk: &dingtalk
     - wget $url -O /tmp/dingtalk.deb
     - apt install /tmp/dingtalk.deb -y
   role1:
-    - *run
+    -
 default:
   *dingtalk

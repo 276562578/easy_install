@@ -4,6 +4,6 @@ apt: &apt
   default_run: 
     - apt install obs-studio -y
   role1:
-    - *run
+    -
 default:
   *apt
