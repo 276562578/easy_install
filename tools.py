@@ -16,3 +16,26 @@ class Config:
 
     def get_apps(self):
         return [app for app in os.listdir(self.config_dir)]
+
+class Env:
+    def __init__(self):
+        pass
+
+    def get_env(self,para):
+        pass
+
+    def set_env(self,para,value):
+        pass
+
+class Executor:
+    def __init__(self):
+        pass
+
+    def mac(self):
+        pass
+
+    def win(self):
+        pass
+
+    def linux(self):
+        pass
