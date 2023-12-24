@@ -1,0 +1,10 @@
+github: &github
+  desc: 远程控制软件
+  compatible:
+    - Debian
+  default_run:
+    - bash utils/github-latest-download.sh rustdesk/rustdesk x86_64.deb rustdesk.deb
+  role1:
+    - apt install ${download_dir}/rustdesk.deb
+default:
+  *github

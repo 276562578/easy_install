@@ -56,5 +56,16 @@ default: # 默认配置，如果没有特殊的配置，就使用这个
 
 - software_dir 所有软件的装目录
 - platform 架构x86, arm等
+- download_dir 默认的下载目录
 
 # API
+
+避免重复早轮子的一些小工具
+
+## github-latest-download
+
+获取github上最新的release版本
+
+```bash
+bash utils/github-latest-download.sh user/repo pattern file_name
+```
