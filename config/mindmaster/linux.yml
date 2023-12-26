@@ -1,0 +1,13 @@
+cn: &cn
+  desc: IDEA community版本
+  compatible:
+    - Debian
+  run_template:
+    - wget "https://www.edrawsoft.cn/download/?type=1&tab=2" -O /tmp/mindmaster.html
+    - url=`cat /tmp/mindmaster.html |grep -Eo "https://cc.*mind.*deb" -m 1`
+    - wget $url -O /tmp/mindmaster.deb
+  role1:
+    - apt install -y /tmp/mindmaster.deb
+
+default:
+  *cn
