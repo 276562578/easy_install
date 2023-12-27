@@ -1,0 +1,11 @@
+ms: &ms
+  desc: 国际版
+  compatible:
+    - Debian
+  default_run:
+    - wget https://launcher.mojang.com/download/Minecraft.deb -O /tmp/minecraft.deb
+    - apt install -y /tmp/minecraft.deb
+  role1:
+    -
+default:
+  *ms
