@@ -1,8 +1,14 @@
+import logging
 import os
 import tkinter as tk
 from PIL import Image, ImageTk
 import tools
 
+DEBUG = True
+if DEBUG:
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+else:
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class BasePage(tk.Tk):
     def __init__(self):
@@ -18,7 +24,7 @@ class MainPage(BasePage):
         # self.resizable(False, False)
         self.main_page()
         self.config=tools.Config()
-        self.apps=self.config.get_apps()
+        self.apps=self.config.get_fine_apps()
         self.env=tools.Env()
         self.executor=tools.Executor()
 
@@ -101,6 +107,7 @@ class MainPage(BasePage):
         for i,app_name in enumerate(self.apps):
             # 定义变量
             app_name=app_name
+            logging.debug(f"app_name:{app_name}")
             app_icon=os.path.join("config",app_name,"icon.png")
             app_config=self.config.get_config(app_name,"linux")["default"]
             app_desc=app_config["desc"]
@@ -113,11 +120,15 @@ class MainPage(BasePage):
             # 组成元素
             app_install = tk.Button(app, text="安装")
             app_install.pack(side="left")
-            im = Image.open(app_icon)
-            ph = ImageTk.PhotoImage(im.resize((50,50)))
-            app_icon=tk.Label(app,image=ph)
-            app_icon.image=ph
-            app_icon.pack(side="left")
+            if os.path.exists(app_icon):
+                im = Image.open(app_icon)
+                ph = ImageTk.PhotoImage(im.resize((50,50)))
+                app_icon=tk.Label(app,image=ph)
+                app_icon.image=ph
+                app_icon.pack(side="left")
+            else:
+                app_icon=tk.Label(app,text="图标缺失")
+                app_icon.pack(side="left")
             # app_select=tk.Checkbutton(app)
             # app_select.pack(side="left")
             app_name=tk.Label(app,text=app_name)

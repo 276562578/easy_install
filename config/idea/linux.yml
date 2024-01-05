@@ -2,20 +2,20 @@ community: &community
   desc: IDEA community版本
   compatible:
     - Debian
-  run_template:
+  default_run:
     - wget "https://download.jetbrains.com/idea/ideaIC-2023.3.2.tar.gz" -O /tmp/ideaIC.tar.gz
   role1:
     - tar xvf /tmp/ideaIC.tar.gz -C ${software_dir}/
     - |-
       echo "[Desktop Entry]
       Type=Application
-      Name=PyCharm
-      Comment=The Python IDE for Professional Developers
-      Exec=${software_dir}/pycharm/bin/pycharm.sh
-      Icon=${software_dir}/pycharm/bin/pycharm.png
+      Name=IDEA
+      Comment=The IDEA for Professional Developers
+      Exec=${software_dir}/idea-IC/bin/idea.sh
+      Icon=${software_dir}/idea-IC/bin/idea.png
       Terminal=false
       Categories=Development;IDE;"
-      > /usr/share/applications/pycharm.desktop
+      > /usr/share/applications/idea.desktop
 
 default:
   *community

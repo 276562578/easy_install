@@ -1,4 +1,5 @@
 auto_command: &auto_command
+  desc: ZeroTier
   compatible:
     - Debian
   default_run: 

@@ -1,4 +1,5 @@
 dingtalk: &dingtalk
+  desc: 钉钉
   compatible:
     - Debian
   default_run: 
