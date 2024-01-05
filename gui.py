@@ -154,6 +154,36 @@ class MainPage(BasePage):
     def role4_page(self):
         pass
 
+class Role1Page(BasePage):
+    def __init__(self):
+        pass
+
+    def search(self):
+        pass
+
+    def install(self):
+        pass
+
+    def canvas(self):
+        pass
+
+    def app_table(self):
+        pass
+
+
+
+class Role2Page(BasePage):
+    def __init__(self):
+        pass
+
+class Role3Page(BasePage):
+    def __init__(self):
+        pass
+
+class Role4Page(BasePage):
+    def __init__(self):
+        pass
+
 
 
 
