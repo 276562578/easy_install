@@ -110,6 +110,8 @@ class MainPage(BasePage):
             logging.debug(f"app_name:{app_name}")
             app_icon=os.path.join("config",app_name,"icon.png")
             app_config=self.config.get_config(app_name,"linux")["default"]
+            if "desc" not in app_config.keys():
+                app_config["desc"]="缺少描述"
             app_desc=app_config["desc"]
             app_default_run=app_config["default_run"]
             app_run=app_config["role1"]
@@ -139,10 +141,10 @@ class MainPage(BasePage):
             line.pack(fill=tk.X,expand=tk.YES,padx=10,pady=10)
 
         # 第三行的确认frame
-        self.frame_role1_sub3=tk.Frame(self.frame_role1,class_="role1_sub3")
-        self.frame_role1_sub3.pack(fill=tk.BOTH,expand=tk.YES,padx=10,pady=10)
-        button_confirm=tk.Button(self.frame_role1_sub3,text="确认")
-        button_confirm.pack(side="right",padx=10,pady=10)
+        # self.frame_role1_sub3=tk.Frame(self.frame_role1,class_="role1_sub3")
+        # self.frame_role1_sub3.pack(fill=tk.BOTH,expand=tk.YES,padx=10,pady=10)
+        # button_confirm=tk.Button(self.frame_role1_sub3,text="确认")
+        # button_confirm.pack(side="right",padx=10,pady=10)
 
 
     def role2_page(self):

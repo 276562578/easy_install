@@ -25,14 +25,15 @@ class Config:
     def check_folder_structure(self, folders):
         app_clean=[]
         for app in folders:
+            logging.debug(f"app:{app}")
             # 1. 检查yml文件
-            if not os.path.exists(os.path.join(app,"linux.yml")) \
-                and not os.path.exists(os.path.join("mac.yml")) \
-                and not os.path.exists(os.path.join("win.yml")):
+            if not os.path.exists(os.path.join(self.config_dir,app,"linux.yml")) \
+                and not os.path.exists(os.path.join(self.config_dir,app,"mac.yml")) \
+                and not os.path.exists(os.path.join(self.config_dir,app,"win.yml")):
                 logging.warning(f"{app}缺少至少一个yml文件")
                 continue
             # 2. 检查icon文件
-            if not os.path.exists(os.path.join(app,"icon.png")):
+            if not os.path.exists(os.path.join(self.config_dir,app,"icon.png")):
                 logging.warning(f"{app}缺少icon文件")
                 continue
 
@@ -40,7 +41,7 @@ class Config:
         return app_clean
 
     def check_ymls_structure(self, ymls):
-        linux_yml_structure_require=["desc","compatible","default_run","role1"]
+        linux_yml_structure_require=["compatible","default_run","role1"]
         yml_clean = []
         for yml in ymls:
             yml_content = self.get_config(yml, "linux")
@@ -48,12 +49,12 @@ class Config:
             if "default" not in yml_content.keys():
                 logging.warning(f"{yml}缺少default配置")
                 continue
-            # 2. 检查default的映射是否存在
-            if yml_content["default"] not in yml_content.keys():
-                logging.warning(f"{yml}的default映射不存在")
-                continue
+            # # 2. 检查default的映射是否存在
+            # if yml_content["default"] not in yml_content.keys():
+            #     logging.warning(f"{yml}的default映射不存在")
+            #     continue
             # 3. 检查该结构内部是否完整
-            if not set(linux_yml_structure_require).issubset(set(yml_content.keys())):
+            if not set(linux_yml_structure_require).issubset(set(yml_content["default"].keys())):
                 logging.warning(f"{yml}的结构不完整")
                 continue
             yml_clean.append(yml)
