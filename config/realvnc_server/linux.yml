@@ -1,0 +1,12 @@
+server: &server
+  desc: server
+  compatible:
+    - Debian
+  default_run:
+    - wget https://www.realvnc.com/en/connect/download/vnc/ -O /tmp/realvnc_server.html
+    - url=$(cat /tmp/realvnc_server.html |grep -Eo "http.*deb"|grep x64 -m 1)
+    - wget $url -O /tmp/realvnc_server.deb
+  role1:
+    - apt install -y /tmp/realvnc_server.deb
+default:
+  *server
