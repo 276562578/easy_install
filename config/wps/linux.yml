@@ -1,0 +1,12 @@
+x64: &x64
+  desc: wps x64版本
+  compatible:
+    - Debian
+  default_run:
+    - wget "https://www.wps.cn/product/wpslinux" -O /tmp/wps.html
+    - url=$(cat /tmp/wps.html | grep -oP 'href=".*?amd64.deb"' | sed 's/href="//g' | sed 's/"//g')
+    - wget $url -O /tmp/wps.deb
+  role1:
+    - apt install -y /tmp/wps.deb
+default:
+  *x64
