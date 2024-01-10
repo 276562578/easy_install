@@ -1,0 +1,27 @@
+#linux 4.1.0版本
+#暂时只有这个版本比较好，4.3.1有问题
+#amd64版本
+#https://dl.todesk.com/linux/todesk_4.1.0_amd64.deb
+#
+#aarch64版本
+#https://dl.todesk.com/linux/todesk_4.1.0_aarch64.deb
+#https://dl.todesk.com/linux/todesk_4.1.0_aarch64.rpm
+#
+#x64
+#rpm包
+#https://dl.todesk.com/linux/todesk_4.1.0_x86_64.rpm
+#tar包
+#https://dl.todesk.com/linux/todesk_4.1.0_x86_64.pkg.tar.zst
+#
+#armv7l 树莓派（少用）
+#https://dl.todesk.com/linux/todesk_4.1.0_armv7l.deb
+x86: &x86
+  desc: x86
+  compatible:
+    - Debian
+  default_run:
+    - wget "https://dl.todesk.com/linux/todesk_4.1.0_amd64.deb" -O /tmp/todesk.deb
+  role1:
+    - apt install -y /tmp/todesk.deb
+default:
+  *x86
