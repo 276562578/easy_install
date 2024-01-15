@@ -2,7 +2,10 @@ apt: &apt
   desc: 一个罗技鼠标的控制器，相当于win的G-Hub，可以调节一些按键的映射
   compatible:
     - Debian
-  default_run: 
+  installation_page:
+  comment:
+  args:
+  run: 
     - apt install piper -y
   role1:
     -

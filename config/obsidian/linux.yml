@@ -2,7 +2,10 @@ deb: &deb
   desc: deb的安装方式
   compatible:
     - Debian
-  default_run:
+  installation_page:
+  comment:
+  args:
+  run:
     - wget https://obsidian.md/download -O /tmp/obsidian.html
     - url=$(cat /tmp/obsidian.html |grep -Eo "https.*deb")
     - wget $url -O /tmp/obsidian.deb

@@ -2,7 +2,10 @@ community: &community
   desc: pycharm community版本
   compatible:
     - Debian
-  default_run:
+  installation_page:
+  comment:
+  args:
+  run:
     - wget "https://download.jetbrains.com/python/pycharm-community-2023.3.2.tar.gz" -O /tmp/pycharm.tar.gz
   role1:
     - tar xvf /tmp/pycharm.tar.gz -C ${software_dir}/

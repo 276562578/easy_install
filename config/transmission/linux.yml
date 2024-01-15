@@ -2,14 +2,20 @@ gui: &gui
   desc: 默认界面版
   compatible:
     - Debian
-  default_run:
+  installation_page:
+  comment:
+  args:
+  run:
   role1:
     - apt install -y transmission-gtk
 daemon: &daemon
   desc: 仅服务端
   compatible:
     - Debian
-  default_run:
+  installation_page:
+  comment:
+  args:
+  run:
   role1:
     - apt install -y transmission-daemon
 default:

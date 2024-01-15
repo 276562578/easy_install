@@ -2,7 +2,10 @@ auto_command: &auto_command
   desc: ZeroTier
   compatible:
     - Debian
-  default_run: 
+  installation_page:
+  comment:
+  args:
+  run: 
     - curl -s https://install.zerotier.com | sudo bash
   role1:
     -

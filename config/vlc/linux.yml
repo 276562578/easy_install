@@ -2,7 +2,10 @@ apt: &apt
   desc: apt
   compatible:
     - Debian
-  default_run:
+  installation_page:
+  comment:
+  args:
+  run:
   role1:
     - apt install -y vlc
 default:

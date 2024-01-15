@@ -2,7 +2,10 @@ apt: &apt
   desc: 另一个罗技鼠标的控制器，可以查看电量等信息
   compatible:
     - Debian
-  default_run: 
+  installation_page:
+  comment:
+  args:
+  run: 
     - apt install solaar -y
   role1:
     -

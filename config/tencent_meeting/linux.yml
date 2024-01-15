@@ -2,7 +2,10 @@ x86: &x86
   desc: x86
   compatible:
     - Debian
-  default_run:
+  installation_page:
+  comment:
+  args:
+  run:
     - wget "https://updatecdn.meeting.qq.com/cos/bb4001c715553579a8b3e496233331d4/TencentMeeting_0300000000_3.19.0.401_x86_64_default.publish.deb" -O /tmp/tencent_meeting.deb
   role1:
     - apt install -y /tmp/tencent_meeting.deb

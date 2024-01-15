@@ -1,7 +1,11 @@
 fsl: &fsl
+  desc: fsl
   compatible:
   - Debian
-  default_run: 
+  installation_page:
+  comment:
+  args:
+  run: 
     - apt -y install dc
     - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py
     - python3 fslinstaller.py -d /usr/local/fsl/
@@ -17,7 +21,9 @@ fsl: &fsl
       <?xml version="1.0" encoding="UTF-8"?>
       <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
         <mime-type type="application/x-nifti-image">
-          <comment>NIfTI Image</comment> 
+          <installation_page:
+  comment>NIfTI Image</installation_page:
+  comment> 
           <glob pattern="*.nii"/> 
           <glob pattern="*.nii.gz"/> 
         </mime-type> 

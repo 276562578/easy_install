@@ -19,7 +19,10 @@ x86: &x86
   desc: x86
   compatible:
     - Debian
-  default_run:
+  installation_page:
+  comment:
+  args:
+  run:
     - wget "https://dl.todesk.com/linux/todesk_4.1.0_amd64.deb" -O /tmp/todesk.deb
   role1:
     - apt install -y /tmp/todesk.deb

@@ -2,7 +2,10 @@ viewer: &viewer
   desc: viewer
   compatible:
     - Debian
-  default_run:
+  installation_page:
+  comment:
+  args:
+  run:
     - wget https://www.realvnc.com/en/connect/download/viewer/ -O /tmp/realvnc_viewer.html
     - url=$(cat /tmp/realvnc_viewer.html |grep -Eo "http.*deb"|grep x64 -m 1)
     - wget $url -O /tmp/realvnc_viewer.deb

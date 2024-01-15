@@ -2,7 +2,10 @@ community: &community
   desc: IDEA community版本
   compatible:
     - Debian
-  default_run:
+  installation_page:
+  comment:
+  args:
+  run:
     - wget "https://download.jetbrains.com/idea/ideaIC-2023.3.2.tar.gz" -O /tmp/ideaIC.tar.gz
   role1:
     - tar xvf /tmp/ideaIC.tar.gz -C ${software_dir}/

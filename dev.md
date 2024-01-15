@@ -27,19 +27,17 @@ qqnt: &qqnt # 这里添加引用，便于default使用
   desc: qqNT版本 # 描述
   compatible: # 兼容的系统，通常为大版本号或者发行版
     - Debian
-  run_template: &run # （opt）默认所有角色都会运行
+  installation_page: # 官网安装说明地址
+    - xxxx
+  comment: # 包含说明的安装过程
+    - \# 说明
+    - xxxx
+  args: # （opt）run的运行参数
+    - xxxx
+  run:  # （opt）默认运行
     - xxxx
   config: # (opt) 配置文件的位置，用于备份
     - xxxx
-  role1: # (require) 超级菜鸟的处理，在这里写入执行的命令，role1需要全自动执行
-    - xxxx
-    - # 可以配合上面设置的模板，推荐将模板写成输入变量的格式之后在role中设置变量
-  role2: # (opt) 中级选手的处理
-    - xxxx # 一般对于中级选手，需要手动输入一些变量，这里可以设置变量
-  role3: # (opt) 高级选手的处理
-    - xxxx # 一般对于高级选手只展示命令，不执行
-  role4: # (opt) 顶级大佬的处理
-    - xxxx # 展示命令并且导航到doc文件夹  
 default: # 默认配置，如果没有特殊的配置，就使用这个
   *qqnt # 引用
 ```
