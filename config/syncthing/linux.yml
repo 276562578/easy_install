@@ -1,0 +1,13 @@
+apt: &apt
+  desc: 最好的同步软件（开源）
+  compatible:
+    - Debian
+  installation_page:
+  comment:
+  args:
+  run: 
+    - apt -y install syncthing
+    - systemctl enable syncthing
+    - systemctl start syncthing
+default:
+  *apt
